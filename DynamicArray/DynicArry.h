@@ -1,22 +1,20 @@
 #pragma once
+#include <iostream>
 
-
-template <typename T>
-class DynicArry
+template <class T>
+class DynamicArray
 {
 public:
-	DynicArry();
-	~DynicArry();
 
-
+	DynamicArray();
+	~DynamicArray();
 
 	bool isEmpty() const;
 	void insert(const T&);
-	void remove(const T&);
-	void sort(const T&);
-	
-	
-
+	void remove();
+	void sort();
+	void print();
+	void clear();
 
 private:
 
@@ -27,7 +25,7 @@ private:
 };
 
 template<typename T>
-DynicArry<T>::DynicArry()
+DynamicArray<T>::DynamicArray()
 {
 	ArySize = 10;
 	arry = new T[ArySize];
@@ -36,7 +34,7 @@ DynicArry<T>::DynicArry()
 }
 
 template<typename T>
-bool DynicArry<T>::isEmpty() const
+bool DynamicArray<T>::isEmpty() const
 {
 	if (SizeFilled == 0)
 	{
@@ -51,16 +49,17 @@ bool DynicArry<T>::isEmpty() const
 
 
 template<typename T>
-void DynicArry<T>::insert(const T & other)
+void DynamicArray<T>::insert(const T & other)
 {
-	if (SizeFilled == 0;)
+	if (SizeFilled == 0)
 	{
 		arry[SizeFilled] = other;
+		SizeFilled = SizeFilled + 1;
 	}
 
 	else if (SizeFilled > 0 && ArySize > SizeFilled)
 	{
-		arr[SizeFilled] = other;
+		arry[SizeFilled] = other;
 		SizeFilled = SizeFilled + 1;
 	}
 	
@@ -68,7 +67,7 @@ void DynicArry<T>::insert(const T & other)
 	{
 		ArySize = ArySize * 2;
 		T* temp = new T[ArySize];
-		for (int i = 0; i < SizeFilled; i++);
+		for (int i = 0; i < SizeFilled; i++)
 		{
 			temp[i] = arry[i];
 			
@@ -83,7 +82,7 @@ void DynicArry<T>::insert(const T & other)
 }
 
 template<typename T>
-void DynicArry<T>::remove(const T &)
+void DynamicArray<T>::remove()
 {
 	if (isEmpty() == false)
 	{
@@ -92,19 +91,35 @@ void DynicArry<T>::remove(const T &)
 }
 
 template<typename T>
-void DynicArry<T>::sort(const T &)
+void DynamicArray<T>::sort()
 {
 	for (int i = 0; i < (SizeFilled - 1); i++)
 	{
-		for (int j = 0; j < (SizeFilled - 2); i++)
+		for (int j = 0; j < (SizeFilled - 1); j++)
 		{
 			if (arry[j] > arry[j + 1])
 			{
-				temp = arry[j];
+				int temp = arry[j];
 				arry[j] = arry[j + 1];
 				arry[j + 1] = temp;
 			}
 		}
 	}
 }
+
+template<class T>
+void DynamicArray<T>::print()
+{
+	for (int i = 0; i < SizeFilled; i++)
+	{
+		std::cout << (arry[i])<< " ";
+	}
+}
+
+template<class T>
+inline void DynamicArray<T>::clear()
+{
+	system("cls");
+}
+
 
