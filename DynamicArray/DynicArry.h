@@ -35,7 +35,7 @@ inline bool DynicArry<T>::isEmpty() const
 	else
 	{
 		return false;
-	}
+	}//ytuu
 }
 
 
