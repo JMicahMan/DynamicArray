@@ -8,6 +8,8 @@ public:
 	DynicArry();
 	~DynicArry();
 
+
+
 	bool isEmpty() const;
 	void insert(const T&);
 	void remove(const T&);
@@ -20,12 +22,21 @@ private:
 
 	int ArySize;
 	int SizeFilled;
-	T arry[];
+	T* arry;
 
 };
 
 template<typename T>
-inline bool DynicArry<T>::isEmpty() const
+DynicArry<T>::DynicArry()
+{
+	ArySize = 10;
+	arry = new T[ArySize];
+	SizeFilled = 0;
+	 
+}
+
+template<typename T>
+bool DynicArry<T>::isEmpty() const
 {
 	if (SizeFilled == 0)
 	{
@@ -35,27 +46,53 @@ inline bool DynicArry<T>::isEmpty() const
 	else
 	{
 		return false;
-	}//ytuu
+	}
 }
 
 
 template<typename T>
-inline void DynicArry<T>::insert(const T &)
+void DynicArry<T>::insert(const T & other)
 {
-	if (ArySize > SizeFilled)
+	if (SizeFilled == 0;)
 	{
+		arry[SizeFilled] = other;
+	}
 
+	else if (SizeFilled > 0 && ArySize > SizeFilled)
+	{
+		arr[SizeFilled] = other;
+		SizeFilled = SizeFilled + 1;
+	}
+	
+	else
+	{
+		ArySize = ArySize * 2;
+		T* temp = new T[ArySize];
+		for (int i = 0; i < SizeFilled; i++);
+		{
+			temp[i] = arry[i];
+			
+		}
+
+		delete arry;
+		arry = temp;
+
+		arry[SizeFilled] = other;
+		SizeFilled = SizeFilled + 1;
 	}
 }
 
 template<typename T>
-inline void DynicArry<T>::remove(const T &)
+void DynicArry<T>::remove(const T &)
 {
-
+	if (isEmpty() == false)
+	{
+		SizeFilled = SizeFilled - 1;
+	}
 }
 
 template<typename T>
-inline void DynicArry<T>::sort(const T &)
+void DynicArry<T>::sort(const T &)
 {
 	for (int i = 0; i < (SizeFilled - 1); i++)
 	{
