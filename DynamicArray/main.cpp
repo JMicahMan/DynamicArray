@@ -40,6 +40,11 @@ int main()
 	testArray->sort();
 	// sort works as intended
 	testArray->print();
+	
+	// search should find the numerical value in the array that matches the number in the parentheses 
+	testArray->search(84);
+	// Search works as intended
+
 
 
 
