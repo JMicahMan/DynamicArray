@@ -15,6 +15,7 @@ public:
 	void sort();
 	void print();
 	void clear();
+	bool search(const T&);
 
 private:
 
@@ -117,9 +118,22 @@ void DynamicArray<T>::print()
 }
 
 template<class T>
-inline void DynamicArray<T>::clear()
+void DynamicArray<T>::clear()
 {
 	system("cls");
+}
+
+template<class T>
+bool DynamicArray<T>::search(const T & other)
+{
+	for (int i = 0; i < SizeFilled; i++)
+	{
+		if (arry[i] == other)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 
